@@ -26,7 +26,7 @@ $products = $product_object->selectWhere("name LIKE '%$keyword%'","id,name,img,p
 		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
-			<h2 class="home_title">Search results for: keyword here</h2>
+			<h2 class="home_title">Search results for: <?= $keyword;?></h2>
 		</div>
 	</div>
 

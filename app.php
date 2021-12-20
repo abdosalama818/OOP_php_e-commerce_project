@@ -18,6 +18,8 @@ require_once(PATH."classes/DBCON.php");
 require_once(PATH."classes/models/Products.php");
 require_once(PATH."classes/models/orders.php");
 require_once(PATH."classes/models/Order_Details.php");
+require_once(PATH."classes/models/Admin.php");
+//require_once(PATH."admin/handelers/handele-login.php");
 
 require_once(PATH."classes/models/Cats.php");
 require_once(PATH."classes/REQUEST2.php");

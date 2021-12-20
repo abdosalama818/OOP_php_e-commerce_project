@@ -45,6 +45,21 @@
              return  mysqli_insert_id($this->con);
 
             }
+
+
+            public function update($set ,$id){
+                $qry= "UPDATE $this->table_name SET $set WHERE id = $id";
+              return mysqli_query($this->con,$qry);
+           
+
+            }
+
+            public function delete($id){
+                $qry= "DELETE FROM $this->table_name WHERE id = $id";
+              return mysqli_query($this->con,$qry);
+           
+
+            }
         }
 
 
