@@ -5,6 +5,24 @@ require_once('header.php')
 
 ?>
 
+<?php
+
+$cat = new Cats;
+$cats = $cat->selectAll();
+
+/*
+
+
+
+*/
+
+$cat = new Cats;
+$cats = $cat->selectAll();
+
+
+
+?>
+
     <div class="container-fluid py-5">
         <div class="row">
 
@@ -26,11 +44,16 @@ require_once('header.php')
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
+                <?php 
+                  $i=1;
+                 foreach($cats as $cat) : ;
+                           
+                ?>
                     <tbody>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Laptops</td>
-                        <td>2020-10-11</td>
+                        <th scope="row"><?=$i++?></th>
+                        <td><?= $cat['name']?></td>
+                        <td><?= $cat['created_at']?></td>
                         <td>
                             <a class="btn btn-sm btn-info" href="#">
                                 <i class="fas fa-edit"></i>
@@ -41,6 +64,7 @@ require_once('header.php')
                         </td>
                       </tr>
                     </tbody>
+                        <?php endforeach ; ?>
                 </table>
             </div>
 

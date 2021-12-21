@@ -3,6 +3,35 @@
 require_once('header.php')
 
 
+
+
+?>
+
+
+<?php
+/*
+we use this line to get data from two columns by two objects
+but we can get data from two columns by join from table one 
+
+ public function selectAll($column = "*"):array{
+        $qry="SELECT $column FROM $this->table_name JOIN cats ON $this->table_name.cat_id = cats.id";
+        $rslt = mysqli_query($this->con,$qry);
+        return mysqli_fetch_all($rslt,MYSQLI_ASSOC);}
+
+
+$cat = new Cats;
+$cats = $cat->selectAll();
+and 
+$Pord = new Products;
+$product = $Pord->selectAll();
+*/
+
+$Pord = new Products;
+$product = $Pord->selectAll("products.created_at AS prodCreated_at,products.id AS prodID ,products.name AS prodName,
+cats.name AS catName,cats.id AS catId,img,price,piecesNo,cats.created_at AS catCreated_at");
+
+
+
 ?>
     <div class="container-fluid py-5">
         <div class="row">
@@ -11,7 +40,7 @@ require_once('header.php')
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3>All Products</h3>
-                    <a href="#" class="btn btn-success">
+                    <a href="add-product.php" class="btn btn-success">
                         Add new
                     </a>
                 </div>
@@ -29,30 +58,37 @@ require_once('header.php')
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
+                    <?php 
+                    $i=1;
+                    foreach($product as $prod) : ?>
                     <tbody>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Lenove ideapad</td>
-                        <td>Laptops</td>
+                        <th scope="row"><?=$i++;?></th>
+                        <td><?=$prod['prodName']?></td>
+                        <td><?=$prod['catName']?></td>
                         <td>
-                            <img src="https://via.placeholder.com/40" alt="">
+                            <img src="../uploads/<?=$prod['img']?>" height="50px" alt="">
                         </td>
-                        <td>3</td>
-                        <td>$15000</td>
-                        <td>2020-10-11</td>
-                        <td>
+                        <td><?=$prod['piecesNo']?></td>
+                        <td>$<?=$prod['price']?></td>
+                        <td><?=  date("Y-m-d H:i a",strtotime($prod['prodCreated_at']))?></td>
+                        <td><!--
                             <a class="btn btn-sm btn-primary" href="#">
                                 <i class="fas fa-eye"></i>
                             </a>
-                            <a class="btn btn-sm btn-info" href="#">
+                        -->
+                            <a class="btn btn-sm btn-info" href="edit-product.php?id=<?=$prod['prodID']?>">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="#">
+                            <a class="btn btn-sm btn-danger" href="handelers/handele-delete.php?id=<?=$prod['prodID']?>">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>
                       </tr>
                     </tbody>
+
+
+                    <?php endforeach  ?>
                 </table>
             </div>
 

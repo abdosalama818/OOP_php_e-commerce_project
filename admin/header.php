@@ -22,23 +22,23 @@ if(! $session->hasSet('adminId')){
 <body>
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">TechStore</a>
+        <a class="navbar-brand" href="index.php">TechStore</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Products</a>
+                  <a class="nav-link" href="products.php">Products</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Categories</a>
+                  <a class="nav-link" href="categories.php">Categories</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Orders</a>
+                  <a class="nav-link" href="order.php">Orders</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Admins</a>
+                  <a class="nav-link" href="admins.php">Admins</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto mr-5">

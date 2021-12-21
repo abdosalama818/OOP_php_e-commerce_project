@@ -15,6 +15,11 @@ class Request {
          
         return $_POST[$key];
      }
+// to files like image
+     public function files(string $key){
+         
+      return $_FILES[$key];
+   }
 
      public function postclean(string $key){
 

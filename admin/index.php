@@ -1,7 +1,20 @@
 <?php 
 
-require_once('header.php')
+require_once('header.php');
 
+
+
+?>
+
+<?php
+    $pr = new Products;
+    $cat = new Cats;
+    $orders = new Orders;
+    $productCount = $pr->getCount();
+    $categoryCount = $cat->getCount();
+    $ordersCount = $orders->getCount();
+    echo " ddddd <br>";
+    print_r($categoryCount);
 
 ?>
     <div class="container py-5">
@@ -12,8 +25,8 @@ require_once('header.php')
                     <div class="card-header">Products</div>
                     <div class="card-body">
                         <div class="card-text d-flex justify-content-between align-items-center">
-                            <h5>233</h5>
-                          <a href="#" class="btn btn-light">Show</a>
+                            <h5><?=$productCount?></h5>
+                          <a href="products.php" class="btn btn-light">Show</a>
                         </div>
                     </div>
                 </div>
@@ -24,8 +37,8 @@ require_once('header.php')
                     <div class="card-header">Categories</div>
                     <div class="card-body">
                         <div class="card-text d-flex justify-content-between align-items-center">
-                            <h5>5</h5>
-                          <a href="#" class="btn btn-light">Show</a>
+                            <h5><?=$categoryCount?></h5>
+                          <a href="categories.php" class="btn btn-light">Show</a>
                         </div>
                     </div>
                 </div>
@@ -36,8 +49,8 @@ require_once('header.php')
                     <div class="card-header">Orders</div>
                     <div class="card-body">
                         <div class="card-text d-flex justify-content-between align-items-center">
-                            <h5>1120</h5>
-                          <a href="#" class="btn btn-light">Show</a>
+                            <h5><?=$ordersCount?></h5>
+                          <a href="orders.php" class="btn btn-light">Show</a>
                         </div>
                     </div>
                 </div>

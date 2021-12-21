@@ -33,10 +33,19 @@
                 return mysqli_fetch_all($rslt,MYSQLI_ASSOC);
             }
 
+
             public function insert($columns ,$values){
                 $qry= "INSERT INTO $this->table_name ($columns) VALUES ($values)";
-                return $rslt = mysqli_query($this->con,$qry);
+                 $rslt = mysqli_query($this->con,$qry);
+              
 
+            }
+            ///3shan tegib 3dd el product or categories or ...
+
+            public function getCount(){
+                $qry= "SELECT COUNT(*) AS cnt FROM $this->table_name";
+                $rslt = mysqli_query($this->con,$qry);
+                return mysqli_fetch_assoc($rslt)['cnt'];
             }
 
             public function insert_and_get_orderId($columns ,$values){

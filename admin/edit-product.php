@@ -5,6 +5,27 @@ require_once('header.php')
 
 
 ?>
+
+<?php
+
+if($request->hasGet('id')){
+    $id= $request->get('id');
+    //echo $id ;
+ 
+  
+
+}else {
+    $id = 1;
+}
+$pr = new Products;
+$cat = new Cats;
+$cats= $cat->selectAll();
+
+ $product = $pr->selectId($id,"products.name AS prodName,
+ cats.name AS catName,cats.id AS catId, `desc` ,img,price,piecesNo,cat_id");
+
+
+?>
     <div class="container py-5">
         <div class="row">
 
@@ -12,48 +33,58 @@ require_once('header.php')
                 <h3 class="mb-3">Edit Product : name here</h3>
                 <div class="card">
                     <div class="card-body p-5">
-                        <form>
+                    <form method="POST" enctype="multipart/form-data" action="handelers/handele-edit.php">
                             <div class="form-group">
                               <label>Name</label>
-                              <input type="text" class="form-control">
+                              <input name="name" type="text" value="<?=$product['prodName']?>" class="form-control">
                             </div>
+                            <input type="hidden" name="id" value="<?=$id?>">
 
                             <div class="form-group">
                                 <label>Category</label>
-                                <select class="form-control">
-                                  <option>one</option>
-                                  <option>two</option>
-                                  <option>three</option>
+
+                                
+                                <select class="form-control"  name="cat_id">
+                                  <option>Select Category</option>
+                                  <?php foreach( $cats as $cat) : ?>
+                                  <option value="<?=$cat['id']?>" <?php if($cat['id'] == $product['cat_id']){echo "selected";};?> >  <?=$cat['name'] ; ?> </option>
+                            
+                             
+
+                                <?php endforeach ?>
                                 </select>
                             </div>
                             
 
                             <div class="form-group">
                                 <label>Price</label>
-                                <input type="number" class="form-control">
+                                <input  name="price" type="number"value="<?=$product['price']?>" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label>Pieces</label>
-                                <input type="number" class="form-control">
+                                <input  name="pieces" type="number" value="<?=$product['piecesNo']?>" class="form-control">
                             </div>
   
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea  name="desc" class="form-control" rows="3"><?=$product['desc']?></textarea>
                             </div>
-                            
+
+                         <div class="mb-3 d-flex justify-content-center">
+                         <img src="<?= '../uploads/' . $product['img']?>" height="100px" alt="" srcset="">
+                         </div>
+
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input  name="img" type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose Image</label>
                             </div>
                               
                             <div class="text-center mt-5">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button  name="submit" type="submit" class="btn btn-primary">Submit</button>
                                 <a class="btn btn-dark" href="#">Back</a>
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
 
