@@ -24,6 +24,7 @@ class Admin extends DBcon{
                   // $session->set('adminPassword',$admin['password']);
                     $session->set('adminEmail',$admin['email']);
                    $session->set('adminName',$admin['name']);
+             
                  //  echo " hello you are auth";
                  // you must write return to make $var $is_same return true to check it in condition
                    return true ;

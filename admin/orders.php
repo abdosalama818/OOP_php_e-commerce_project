@@ -5,6 +5,15 @@ require_once('header.php')
 
 ?>
 
+
+
+<?php
+
+$or = new Orders;
+$orders = $or->selectAll("orders.id,orders.name,orders.status_of_order, orders.email,orders.phone,orders.created_at,SUM(price * qty) AS total")
+
+?>
+
     <div class="container-fluid py-5">
         <div class="row">
 
@@ -27,19 +36,25 @@ require_once('header.php')
                       </tr>
                     </thead>
                     <tbody>
+
+                    <?php
+                    $i=1;
+                    foreach($orders as $order ):?>
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Kareem Fouad</td>
-                        <td>01012345678</td>
-                        <td>$15000</td>
-                        <td>2020-10-11</td>
-                        <td>pending</td>
+                        <th scope="row"><?=$i++?></th>
+                        <td><?=$order['name']?></td>
+                        <td><?=$order['phone']?></td>
+                        <td>$<?=$order['total']?></td>
+                        <td><?=date('y/m/d h:i a',strtotime($order['created_at']))?></td>
+                        <td><?=$order['status_of_order']?></td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href="#">
+                            <a class="btn btn-sm btn-primary" href="order.php?id=<?=$order['id']?>">
                                 <i class="fas fa-eye"></i>
                             </a>
                         </td>
                       </tr>
+
+                      <?php endforeach ?>
                     </tbody>
                 </table>
             </div>

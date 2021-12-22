@@ -7,8 +7,6 @@ require_once('header.php')
 
 <?php
 
-$cat = new Cats;
-$cats = $cat->selectAll();
 
 /*
 
@@ -30,7 +28,7 @@ $cats = $cat->selectAll();
 
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h3>All Categories</h3>
-                    <a href="#" class="btn btn-success">
+                    <a href="add-category.php" class="btn btn-success">
                         Add new
                     </a>
                 </div>
@@ -55,10 +53,10 @@ $cats = $cat->selectAll();
                         <td><?= $cat['name']?></td>
                         <td><?= $cat['created_at']?></td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="#">
+                            <a class="btn btn-sm btn-info" href="edit-category.php?id=<?= $cat['id']?>">
                                 <i class="fas fa-edit"></i>
                             </a>
-                            <a class="btn btn-sm btn-danger" href="#">
+                            <a class="btn btn-sm btn-danger" href="handelers/delete-category.php?id=<?= $cat['id']?>">
                                 <i class="fas fa-trash"></i>
                             </a>
                         </td>

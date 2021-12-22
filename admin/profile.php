@@ -16,6 +16,7 @@ require_once('header.php')
                             <div class="form-group">
                               <label>Name</label>
                               <input type="text"  name="name" class="form-control"  value="<?= $session->get('adminName');?>">
+                              
                             </div>
 
                             <div class="form-group">

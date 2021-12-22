@@ -92,7 +92,7 @@ include_once('header.php')
 								<input type="text" name="phone" id="contact_form_phone" class="contact_form_phone input_field" placeholder="Your phone number">
 							</div>
 							<div class="contact_form_text">
-								<textarea id="contact_form_message" name="address" class="text_field contact_form_message" rows="4" placeholder="Your address"></textarea>
+								<textarea id="contact_form_message" name="xxxx" class="text_field contact_form_message" rows="4" placeholder="Your address"></textarea>
 							</div>
 							<div class="contact_form_button">
 								<button type="submit" name="submit" class="button contact_submit_button">Submit Order</button>

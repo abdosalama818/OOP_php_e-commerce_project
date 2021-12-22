@@ -13,8 +13,10 @@ require_once('header.php');
     $productCount = $pr->getCount();
     $categoryCount = $cat->getCount();
     $ordersCount = $orders->getCount();
-    echo " ddddd <br>";
-    print_r($categoryCount);
+  
+   
+   
+   
 
 ?>
     <div class="container py-5">

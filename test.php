@@ -13,9 +13,18 @@ $ar=$admin->login('admin@gmail.com','1' ,$session);
 //$ax = $admin->logout();
 
 //echo "<br>";
-if($ar){
-    echo "heee";
-}
+$order_details= new OrderDetails;
+
+
+
+
+$xw = $order_details->insert("orders_id",'1111');
+
+
+$w = $order_details->selectAll();
+
+print_r($w);
+
 
 
 

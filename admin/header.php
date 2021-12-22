@@ -8,6 +8,14 @@ if(! $session->hasSet('adminId')){
 }
 ?>
 
+<?php
+
+    $ad = new Admin;
+    $id = $session->get('adminId');
+    $admin = $ad->selectId($id);
+   
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,11 +43,13 @@ if(! $session->hasSet('adminId')){
                   <a class="nav-link" href="categories.php">Categories</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="order.php">Orders</a>
+                  <a class="nav-link" href="orders.php">Orders</a>
                 </li>
+                <?php if($admin['is_super'] == 'yes') : ?>
                 <li class="nav-item">
                   <a class="nav-link" href="admins.php">Admins</a>
                 </li>
+                <?php endif?>
             </ul>
             <ul class="navbar-nav ml-auto mr-5">
                 <li class="nav-item dropdown">
